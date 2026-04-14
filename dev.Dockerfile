@@ -34,4 +34,5 @@ RUN chmod 0755 /usr/local/bin/entrypoint.sh
 WORKDIR /work
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
 CMD ["bash"]
