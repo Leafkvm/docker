@@ -38,6 +38,13 @@ mkdir -p "$home_dir/.ssh" "$home_dir/br-dl" /work
 chmod 700 "$home_dir/.ssh"
 chown -R "$uid:$gid" "$home_dir" /work
 
+for managed_dir in "${CARGO_HOME:-}" "${RUSTUP_HOME:-}" "${N_PREFIX:-}"; do
+    if [ -n "$managed_dir" ]; then
+        mkdir -p "$managed_dir"
+        chown -R "$uid:$gid" "$managed_dir"
+    fi
+done
+
 echo "$user_name ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/99-sudo-nopasswd
 chmod 0440 /etc/sudoers.d/99-sudo-nopasswd
 usermod -aG sudo "$user_name"
