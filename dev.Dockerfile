@@ -17,6 +17,7 @@ RUN set -eux; \
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal --no-modify-path; \
 	curl -fsSL https://bit.ly/n-install | N_PREFIX="$N_PREFIX" bash -s -- -y -n; \
 	rustup default stable; \
+	rustup target add aarch64-unknown-linux-gnu; \
 	for tool in "$CARGO_HOME"/bin/* "$N_PREFIX"/bin/*; do \
 		ln -sf "$tool" "/usr/local/bin/$(basename "$tool")"; \
 	done
