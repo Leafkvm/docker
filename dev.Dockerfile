@@ -10,7 +10,8 @@ ENV PATH=/opt/cargo/bin:/opt/n/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr
 
 RUN set -eux; \
 	apt-get update; \
-	apt-get install -y libncurses-dev ripgrep jq; \
+	apt-get install -y direnv libncurses-dev ripgrep jq; \
+	printf '\n%s\n' 'eval "$(direnv hook bash)"' >> /etc/bash.bashrc; \
 	rm -rf /var/lib/apt/lists/*;
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal --no-modify-path; \
