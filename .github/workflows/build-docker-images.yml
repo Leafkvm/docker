@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 120
     env:
       DOCKER_BUILDKIT: 1
-      DOCKERHUB_NAMESPACE: lazymio
+      DOCKERHUB_NAMESPACE: leafkvm
       IMAGE_NAME: leafkvm
     steps:
       - name: Checkout workflow repository
